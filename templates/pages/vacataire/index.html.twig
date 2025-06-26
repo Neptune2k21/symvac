@@ -23,6 +23,9 @@
             <tr>
                 <td>{{ vacataire.id }}</td>
                 <td>{{ vacataire.nom }}</td>
+                <td>
+                <a href="{{ path('vacataire_edit', {'id': vacataire.id}) }}" class="btn btn-primary btn-sm">Modifier</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

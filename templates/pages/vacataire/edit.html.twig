@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un vacataire{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Modifier le vacataire : {{ vacataire.nom }}</h1>
+    
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+    
+    <a href="{{ path('app_vacataire') }}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+{% endblock %}
