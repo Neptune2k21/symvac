@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <h1 class="mt-4">Création d'un vacataire</h1>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="form-error">
+            {{ form_errors(form.nom) }}
+        </div>
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom) }}
+        <div class="row">
+            {{ form_row(form.submit) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
