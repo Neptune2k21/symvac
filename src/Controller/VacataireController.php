@@ -80,4 +80,29 @@ final class VacataireController extends AbstractController
             'vacataire' => $vacataire,
         ]);
     }
+    #[Route('/vacataire/{id}/supprimer', name: 'vacataire_delete', methods: ['POST'])]
+    public function delete(int $id, Request $request, EntityManagerInterface $manager, VacataireRepository $repository): Response
+    {
+        $vacataire = $repository->find($id);
+        
+        if (!$vacataire) {
+            throw $this->createNotFoundException('Vacataire non trouvé');
+        }
+
+        if ($this->isCsrfTokenValid('delete'.$vacataire->getId(), $request->request->get('_token'))) {
+            $manager->remove($vacataire);
+            $manager->flush();
+            $this->addFlash(
+                'success',
+                'Le vacataire a été supprimé avec succès !'
+            );
+        } else {
+            $this->addFlash(
+                'error',
+                'Token CSRF invalide'
+            );
+        }
+
+        return $this->redirectToRoute('app_vacataire');
+    }
 }
