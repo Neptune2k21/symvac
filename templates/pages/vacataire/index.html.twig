@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Vacataires{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Mes Vacataires</h1>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Numéro</th>
+                <th>Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vacataire in vacataires %}
+            <tr>
+                <td>{{ vacataire.id }}</td>
+                <td>{{ vacataire.nom }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {# Affichage des contrôles de pagination #}
+    <div class="navigation">
+        {{ knp_pagination_render(vacataires) }}
+    </div>
+</div>
+{% endblock %}
